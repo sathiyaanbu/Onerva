@@ -1,0 +1,2 @@
+  482  REMOVE_ALL_COLLECTIONS=1 node init.database.js 
+  483  GROUP_ALIAS='Onervahoiva' ADMIN_ALIAS='Pirjo' ADMIN_EMAIL='pirjo@onervahoiva.fi' ADMIN_PASSWD='Kala1234' ADMIN_PIN='1234'  node add.admin.js

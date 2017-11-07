@@ -1,0 +1,79 @@
+0) setup
+   a) create database onerva_test_temp
+   b) create admin user
+   c) add permissions to admin user
+
+1) admin login
+   c) login admin with password        = SUCCESS
+   d) login admin with wrong email     = FAIL
+   e) login admin with wrong password  = FAIL
+   f) login admin with wrong pin       = FAIL
+
+2) modify user as admin
+   a) create user as admin                      = SUCCESS
+   b) read   user as admin                      = SUCCESS
+   c) write  user as admin                      = SUCCESS
+      + verify by reading again
+
+3) modify chat as admin
+   a) create chat as admin                      = SUCCESS
+   b) read   chat as admin                      = SUCCESS
+   c) write  chat as admin                      = SUCCESS
+      + verify by reading again
+
+4) modify group as admin
+   a) create group as admin                     = SUCCESS
+   b) read   group as admin                     = SUCCESS
+   c) write  group as admin                     = SUCCESS
+      + verify by reading again
+
+5) normal user behaviour
+   a) login user with password+pin
+   b) read  user as user
+   c) write user as user
+      + verify by reading again
+   d) read  groups aliases as user	(auth_hash + pin)
+   e) read  chat  as user 		(auth_hash + pin)
+   f) read  description as user 	(auth_hash + pin)
+   g) create entry			(auth_hash + pin)
+   h) read   entries as user 		(auth_hash + pin)
+
+6) user special cases
+   a) login user with wrong password
+      + check error message
+   b) expire user and read description and entries
+      + verify that only description and entries are returned with
+        correct time interval
+
+8) login attacks
+   a) try to login with username and password+pin several times
+   b) try to login with uid, auth_hash+pin several times
+   c) try to login with invalid authorization header
+
+6) malicious user behaviour
+   a) try to read  user without permissions
+   b) try to write user without permissions
+   c) try to read  chat without permissions
+   d) try to write chat without permissions
+   e) try to read  group without permissions
+   f) try to write group without permissions
+   h) try to create entry without permissions
+
+7) malicious admin behaviour
+   a-h) redo as admin
+   i) try to write user as admin trying to change UID
+   h) try to write chat as admin trying to change CID
+   k) trt to write group as admin trying to change GID
+   l) try to create existing user
+   m) try to create existing chat
+   n) try to create existing group
+   
+8) invalid data
+   a) login
+   b) onerva auth token
+   c) user
+   d) chat
+   e) group
+   f) entry
+
+X) remove database onerva_test_temp

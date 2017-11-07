@@ -1,0 +1,41 @@
+import React, { Component, StyleSheet } from 'react';
+import {
+    Image,
+    View,
+} from './onerva';
+
+export default class SplashScreen extends Component {
+    constructor(props, context) {
+	super(props, context);
+	this.state = { rotation: -10 };
+	this.updateRotation = this.updateRotation.bind(this);
+    }
+
+    componentDidMount() {
+	this.interval = requestAnimationFrame(this.updateRotation);
+    }
+    componentWillUnmount() {
+	cancelAnimationFrame(this.interval);
+    }
+
+    updateRotation() {
+	this.setState({ rotation: this.state.rotation + 3 });
+	//this.forceUpdate();
+	this.interval = requestAnimationFrame(this.updateRotation);
+    }
+    
+    render() {
+	let scene = this;
+
+	return (
+	    <View style={{ opacity: 1.0, position: 'relative', width: '50%', height: '100%', marginLeft: 'auto', marginRight: 'auto' }}>
+	    <View style={{ position: 'absolute', margin: 0, top: '50%', transform: ['translate(0, -50%)'] }} >
+	    <Image style={{ width: '100%' }} source={require('./imgs/splash.png')} />
+	    </View>
+		<View style={{ position: 'absolute', width: '100%', top: '75%', transform: ['translate(0, -25%)'], textAlign: 'center' }} >
+	    <Image style={{ width: '30%', opacity: 0.5, transform: ['rotate('+scene.state.rotation+'deg)'] }} source={require('./imgs/loading.png')} />
+	    </View>
+	    </View>
+	);
+    }
+}

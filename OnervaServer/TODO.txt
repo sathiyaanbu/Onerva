@@ -1,0 +1,7 @@
+1) Kirjautumissivulle "Ole hyvä ja kirjaudu alta."
+2) OnervaUsers tallenna s�{username: id}, jotta jos kirjaudutaan uudestaan niin päivittyy id.
+3) Kuvaus erinäköiseksi
+4) Toimintakyky pois
+5) Kuvausta ei voi editoida, joten ei saa näyhttää ett ä voi.
+6) Hoitotoimet pois.
+7) Asiakas => läheisesi
